@@ -6,6 +6,7 @@ class WorkoutProvider extends ChangeNotifier {
   Workout currentWorkout;
   Excercise currentExcercise;
   int currentExcerciseIndex;
+  bool isDone = false; 
 
   WorkoutProvider() {
     currentWorkout = Workout();
@@ -21,9 +22,12 @@ class WorkoutProvider extends ChangeNotifier {
   }
 
   void nextExcercise() {
-    int currentIndex = currentWorkout.excercises.indexOf(currentExcercise);
-    if (currentWorkout.excercises.length - 1 == currentIndex) return;
-    currentExcercise = currentWorkout.excercises[currentIndex + 1];
+    if(currentExcerciseIndex == currentWorkout.excercises.length - 1) {
+      isDone = true; 
+      notifyListeners();
+      return; 
+    }
+    currentExcercise = currentWorkout.excercises[currentExcerciseIndex + 1];
     currentExcerciseIndex++;
     notifyListeners();
   }

@@ -23,19 +23,22 @@ class __InfiniteTimerState extends HookState<int, _Timer> {
   @override
   void initHook() {
     super.initHook();
+    bool isDone = Provider.of<WorkoutProvider>(context).isDone;
     _remainingTime = Provider.of<WorkoutProvider>(context, listen: false)
         .currentExcercise
         .durationInS;
     _timer = Timer.periodic(Duration(seconds: 1), (timer) {
-      if (_remainingTime == 0) {
+      if (_remainingTime == 0 && !isDone) {
         Provider.of<WorkoutProvider>(context, listen: false).nextExcercise();
         _remainingTime = Provider.of<WorkoutProvider>(context, listen: false)
             .currentExcercise
             .durationInS;
-      } else {
+      } else if(!isDone) {
         setState(() {
           _remainingTime = _remainingTime - 1;
         });
+      } else {
+        print("you're done, great!!");
       }
     });
   }

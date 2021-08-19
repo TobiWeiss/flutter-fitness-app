@@ -58,20 +58,21 @@ class ExcerciseTimer extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final number = useTimer(duration);
-    
+     bool isDone = Provider.of<WorkoutProvider>(context).isDone;
+
     return CircularPercentIndicator(
-      radius: 500.0,
-      lineWidth: 15.0,
-      percent: number / duration,
+      radius: 700.0,
+      lineWidth: 35.0,
+      percent: !isDone ? number / duration : 0,
       center: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            number.toString(),
+            !isDone ? number.toString() : '0',
             style: AppTextStyles.h2,
           ),
           Text(
-            Provider.of<WorkoutProvider>(context).currentExcercise.name,
+            !isDone ? Provider.of<WorkoutProvider>(context).currentExcercise.name : 'Fertig :)',
             style: AppTextStyles.h1,
           ),
         ],
@@ -86,19 +87,17 @@ class ExcerciseTimer extends HookWidget {
 class WorkoutProgress extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    int excercisesDone = Provider.of<WorkoutProvider>(context).currentExcerciseIndex;
+    int amountOfExcercises =
+        Provider.of<WorkoutProvider>(context).currentWorkout.excercises.length;
+    double percent = excercisesDone / amountOfExcercises;
+    bool isDone = Provider.of<WorkoutProvider>(context).isDone;
     return LinearPercentIndicator(
       width: 600.0,
       lineHeight: 80.0,
-      percent: Provider.of<WorkoutProvider>(context)
-              .currentWorkout
-              .excercises
-              .indexOf(Provider.of<WorkoutProvider>(context).currentExcercise) /
-          Provider.of<WorkoutProvider>(context)
-              .currentWorkout
-              .excercises
-              .length,
+      percent: !isDone ? percent : 1.0,
       center: Text(
-        '${(Provider.of<WorkoutProvider>(context).currentExcerciseIndex / (Provider.of<WorkoutProvider>(context).currentWorkout.excercises.length - 1)) * 100}%',
+        '${!isDone ? percent * 100 : 100}%',
         style: new TextStyle(fontSize: 12.0),
       ),
       linearStrokeCap: LinearStrokeCap.roundAll,
