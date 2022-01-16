@@ -1,5 +1,5 @@
-name: flutter_boilerplate_starter
-description: A new Flutter project.
+name: flutter_fitness_app
+description: A fitness App for Flutter.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
