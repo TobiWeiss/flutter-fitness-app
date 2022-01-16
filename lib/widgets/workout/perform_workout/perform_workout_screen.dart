@@ -10,6 +10,7 @@ import '../../../hooks/timer_hook.dart';
 import '../../../providers/workout_provider.dart';
 import '../../../services/size_service.dart';
 
+
 class PerformWorkoutScreen extends StatefulWidget {
   @override
   _PerformWorkoutScreenState createState() => _PerformWorkoutScreenState();
@@ -52,14 +53,14 @@ class _PerformWorkoutScreenState extends State<PerformWorkoutScreen> {
 
 class ExcerciseTimer extends HookWidget {
   final int duration;
-
   const ExcerciseTimer({@required this.duration});
 
   @override
   Widget build(BuildContext context) {
     final number = useTimer(duration);
-     bool isDone = Provider.of<WorkoutProvider>(context).isDone;
-
+    print(number);
+    bool isDone = Provider.of<WorkoutProvider>(context).isDone;
+  
     return CircularPercentIndicator(
       radius: 700.0,
       lineWidth: 35.0,
@@ -97,7 +98,7 @@ class WorkoutProgress extends StatelessWidget {
       lineHeight: 80.0,
       percent: !isDone ? percent : 1.0,
       center: Text(
-        '${!isDone ? percent * 100 : 100}%',
+        '${!isDone ? (percent * 100).toStringAsFixed(2) : 100}%',
         style: new TextStyle(fontSize: 12.0),
       ),
       linearStrokeCap: LinearStrokeCap.roundAll,

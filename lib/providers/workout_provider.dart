@@ -96,7 +96,7 @@ class WorkoutProvider extends ChangeNotifier {
 
   void _addRepetitions() {
     List<Excercise> excercises = currentWorkout.excercises;
-    for (int i = 0; i < currentWorkout.repetitions; i++) {
+    for (int i = 1; i < currentWorkout.repetitions; i++) {
       currentWorkout.excercises = [...currentWorkout.excercises, ...excercises];
     }
   }
