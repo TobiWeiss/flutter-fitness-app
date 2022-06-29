@@ -6,10 +6,10 @@ import 'add_workout/add_workout_modal_footer.dart';
 import 'add_workout/add_workout_modal_header.dart';
 import 'add_workout/add_workout_modal_input.dart';
 import 'add_workout/add_workout_modal_list_view.dart';
-import 'package:audioplayers/audioplayers.dart';
+// import 'package:audioplayers/audioplayers.dart';
 
 class AddWorkoutScreen extends StatelessWidget {
-  final AudioPlayer audioPlayer = AudioPlayer();
+  // final AudioPlayer audioPlayer = AudioPlayer();
 
   @override
   Widget build(BuildContext context) {

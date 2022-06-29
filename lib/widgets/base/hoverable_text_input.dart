@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import '../../constants/colors.dart';
 import '../../constants/text_styles.dart';
 
-typedef void OnChangeCallback(String change);
-
 class HoverableTextInput extends StatefulWidget {
   final double width;
   final String labelText;

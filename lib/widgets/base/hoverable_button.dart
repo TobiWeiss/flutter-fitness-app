@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 // ignore: prefer_relative_imports
-import 'package:flutter_boilerplate_starter/constants/text_styles.dart';
+import 'package:flutter_fitness_app/constants/text_styles.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HoverableButton extends StatefulWidget {

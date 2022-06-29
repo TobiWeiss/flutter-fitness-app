@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:provider/provider.dart';
-import 'package:audioplayers/audioplayers.dart';
+// import 'package:audioplayers/audioplayers.dart';
 
 import '../providers/workout_provider.dart';
 
@@ -19,7 +19,7 @@ class _Timer extends Hook<int> {
 class __InfiniteTimerState extends HookState<int, _Timer> {
   Timer _timer;
   int _remainingTime;
-  AudioPlayer _audioPlayer;
+  // AudioPlayer _audioPlayer;
 
   @override
   void initHook() {
@@ -28,10 +28,10 @@ class __InfiniteTimerState extends HookState<int, _Timer> {
     _remainingTime = Provider.of<WorkoutProvider>(context, listen: false)
         .currentExcercise
         .durationInS;
-    _audioPlayer = AudioPlayer();
+    // _audioPlayer = AudioPlayer();
     _timer = Timer.periodic(Duration(seconds: 1), (timer) {
       if (_remainingTime == 11) {
-        _audioPlayer.play('assets/male_countdown.wav');
+        // _audioPlayer.play('assets/male_countdown.wav');
       }
       if (_remainingTime == 0 && !isDone) {
         Provider.of<WorkoutProvider>(context, listen: false).nextExcercise();
